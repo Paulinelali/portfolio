@@ -1,0 +1,48 @@
+{% extends "portfolio/base.html" %}
+
+
+
+
+{% block content %}
+<!--start pictur header-->
+    <div class="container text-center" >
+
+    <div class="mb-5" style="background-color:#FAFAFA; border-radius:15px;  text-align:center; margin-top:50px">
+      {% for pic in myInfo %}
+        <img src="{{ pic.mypic.url }}"/>
+      {% endfor %}
+      <h2>Pauline_lali</h2>
+    </div>
+    
+    </div>
+  <!--end pictur header-->
+
+
+  <!--start projects display-->
+
+  <div class="text-center bg-primary text-uppercase p-2 text-light" style="margin-top:90px">
+    <h1>Projects</h1>
+  </div>
+
+  <div class="mt-2 mb-4 text-center p-2">
+      <div class="row mb-2 text-center justify-content-center">
+          {% for project in Projects %}
+              <div class="col-sm-6 col-lg-4 text-center mt-2">
+                  <div class="card border shadow-lg rounded" style="">
+                  <img src="{{ project.img.url }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                  <h5 class="card-title">{{ project.title }}</h5>
+                  <p class="card-text">{{ project.description }}</p>
+                  {% if project.url %}
+                  <a href="{{ project.url }}" class="btn" style="background-color:teal; color:white" target="_blank" >Visit projects </a>
+                  {% endif %}
+                  </div>
+              </div>
+              </div>
+          {% endfor %}
+      </div>
+      <button type="button" class="btn btn-primary btn-lg m-4"><a href="{% url "projects" %}" target="_blank" class="text-decoration-none text-light">View projects</a></button>
+  </div>
+
+
+{% endblock %}

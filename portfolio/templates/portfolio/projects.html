@@ -1,0 +1,35 @@
+{% extends "portfolio/base.html" %}
+
+
+{% block content %}
+<div class="text-center bg-primary text-light text-uppercase p-2 " style="margin-top:50px">
+    <h1>projects</h1>
+</div>
+
+<!--start table-->
+<table class="table text-uppercase text-center mb-3 mt-2">
+  <thead class="bg-danger">
+    <tr>
+      <th scope="col"><h5><b>platform</b></h5></th>
+      <th scope="col"><h5><b>urls</b></h5></th>
+      <th scope="col"><h5><b>created</b></h5></th>
+    </tr>
+  </thead>
+  <tbody class="">
+  {% for project in Projects %}
+    <tr>
+      <td>{{ project.platform }}</td>
+      <td>
+        {% if project.url %}
+            <a href="{{ project.url }}" class="text-decoration-none" target="_blank">visit</a>
+        {% else %}
+            <b>No adress provided </b>
+        {% endif %}
+        </td>
+      <td>{{ project.date_created}}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
